@@ -1,0 +1,12 @@
+---
+- name: this is ansble vault file
+  hosts: all
+  become: true
+  vars_files:
+     - vault-pass.yml
+  tasks:
+    - name: clone a repo 
+      git: 
+        repo: https://rcniet:{{ password }}@github.com/rcniet/vault1.git
+        dest: /opt/ansadmin/test-vault
+

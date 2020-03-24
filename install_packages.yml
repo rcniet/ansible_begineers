@@ -1,0 +1,9 @@
+---
+- name: install packages
+  hosts: webserver
+  become: true
+  tasks:
+          - name: install apache through yum module
+            yum:
+                    name: tree
+                    state: installed

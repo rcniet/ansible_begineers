@@ -1,0 +1,31 @@
+---
+- name: remove httpd
+  hosts: all
+  become: true
+  tasks:
+     - name: stop apache server
+       service:
+            name: httpd
+            state: stopped
+       when: ansible_os_family == "RedHat"
+
+     - name: remove apache server
+       yum:
+         name: httpd
+         state: removed
+
+       when: ansible_os_family == "RedHat"
+
+     - name: stop apache2 server
+       service:
+            name: apache2
+            state: stopped
+       when: ansible_os_family == "Debian"
+
+     - name: remove apache2 server
+       apt:
+         name: apache2
+         state: absent
+
+
+       when: ansible_os_family == "Debian"

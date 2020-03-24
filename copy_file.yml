@@ -1,0 +1,18 @@
+---
+- name: copy file 
+  hosts: all
+  become: true
+  gather_facts: no
+  tasks:
+             - name: copy a file
+               copy:
+                    src: /home/ansadmin/index.html
+                    dest: /home/ansadmin/
+                    mode: 777
+                    owner: mohit
+                    group: mohit
+                    
+          # - name: remove file
+          #   file:
+          #            dest: /home/ansadmin/index.html
+          #           state: absent

@@ -1,0 +1,12 @@
+---
+- name: install multiple package
+  hosts: webserver
+  become: true
+  tasks:
+     - name: install package
+       yum:
+         name: "{{ item }}"
+         state: installed
+       with_items:
+         - wget
+       when: ansible_os_family == "RedHat"

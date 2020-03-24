@@ -1,0 +1,13 @@
+---
+ - name: remove apache2
+   hosts: dbserver
+   become: true
+   tasks:
+     - name: apache2 server
+       service:
+            name: apache2
+            state: stopped
+     - name: remove apache2
+       apt:
+         name: apache2
+         state: absent
